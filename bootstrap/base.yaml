@@ -25,7 +25,7 @@ spec:
   - name: cluster-name-secret
     namespace: tanzu-continuousdelivery-resources
   interval: 1m0s
-  path: common/per-cluster
+  path: ./bootstrap/common/per-cluster
   postBuild:
     substituteFrom:
       - kind: Secret
