@@ -6,4 +6,4 @@ metadata:
 spec:
   type: oci
   interval: 120m
-  url: oci://tccr.io/
+  url: oci://tccr.io/truecharts

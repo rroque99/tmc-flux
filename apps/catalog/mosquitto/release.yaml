@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       version: "5.0.20"
-      chart: truecharts/mosquitto
+      chart: mosquitto
       sourceRef:
         kind: HelmRepository
         name: truecharts
