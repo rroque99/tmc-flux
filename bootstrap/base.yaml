@@ -13,6 +13,27 @@ spec:
     namespace: tanzu-continuousdelivery-resources
     name: infra-gitops
 
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: bootstrap-clustergroup-gitops
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  dependsOn:
+  - name: cluster-name-secret
+    namespace: tanzu-continuousdelivery-resources
+  interval: 1m0s
+  path: ./bootstrap/common/per-clustergroup
+  postBuild:
+    substituteFrom:
+      - kind: Secret
+        name: clustergroup-name-secret
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: infra-gitops 
 
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
@@ -22,7 +43,7 @@ metadata:
   namespace: tanzu-continuousdelivery-resources
 spec:
   dependsOn:
-  - name: cluster-name-secret
+  - name: bootstrap-clustergroup-gitops
     namespace: tanzu-continuousdelivery-resources
   interval: 1m0s
   path: ./bootstrap/common/per-cluster
@@ -36,24 +57,4 @@ spec:
     namespace: tanzu-continuousdelivery-resources
     name: infra-gitops
 
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
-kind: Kustomization
-metadata:
-  name: bootstrap-clustergroup-gitops
-  namespace: tanzu-continuousdelivery-resources
-spec:
-  dependsOn:
-  - name: bootstrap-cluster-gitops
-    namespace: tanzu-continuousdelivery-resources
-  interval: 1m0s
-  path: ./bootstrap/common/per-clustergroup
-  postBuild:
-    substituteFrom:
-      - kind: Secret
-        name: clustergroup-name-secret
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    namespace: tanzu-continuousdelivery-resources
-    name: infra-gitops    
+   
