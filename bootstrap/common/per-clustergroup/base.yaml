@@ -7,7 +7,7 @@ spec:
   interval: 1m0s
   path: clustergroups/${clustergroup_name}
   components: 
-    - clusters/${cluster_name}/clustergroup-patches
+    - ../../clusters/${cluster_name}/clustergroup-patches
   prune: true
   postBuild:
     substitute:
