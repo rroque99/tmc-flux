@@ -6,10 +6,12 @@ metadata:
 spec:
   interval: 1m0s
   path: clustergroups/${clustergroup_name}
+  components: clusters/${cluster_name}/clustergroup-patches
   prune: true
   postBuild:
     substitute:
       clustergroup_name: ${clustergroup_name}
+      cluster_name: ${cluster_name}
   sourceRef:
     kind: GitRepository
     namespace: tanzu-continuousdelivery-resources

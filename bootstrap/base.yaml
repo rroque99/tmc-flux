@@ -29,6 +29,8 @@ spec:
     substituteFrom:
       - kind: Secret
         name: clustergroup-name-secret
+      - kind: Secret
+        name: cluster-name-secret
   prune: true
   sourceRef:
     kind: GitRepository
