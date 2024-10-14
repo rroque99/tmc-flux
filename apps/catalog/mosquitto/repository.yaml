@@ -2,8 +2,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
-  name: truecharts
+  name: t3n
 spec:
-  type: oci
   interval: 120m
-  url: oci://tccr.io/truecharts
+  url: https://storage.googleapis.com/t3n-helm-charts

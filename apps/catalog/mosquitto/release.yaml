@@ -8,11 +8,11 @@ spec:
   interval: 5m
   chart:
     spec:
-      version: "5.0.20"
+      version: "2.4.1"
       chart: mosquitto
       sourceRef:
         kind: HelmRepository
-        name: truecharts
+        name: t3n
       interval: 60m
   install:
     crds: Create
