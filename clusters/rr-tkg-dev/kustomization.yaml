@@ -6,7 +6,7 @@ generatorOptions:
 resources:
 #- ../../apps/catalog/cert-manager
 - ../../apps/catalog/prometheus
-- ../../apps/mosquitto
+- ../../apps/catalog/mosquitto
 
 #patches:
 #- target:
