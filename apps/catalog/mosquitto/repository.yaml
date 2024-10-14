@@ -4,5 +4,6 @@ kind: HelmRepository
 metadata:
   name: truecharts
 spec:
+  type: oci
   interval: 120m
-  url: https://charts.truecharts.org/
+  url: oci://tccr.io/
