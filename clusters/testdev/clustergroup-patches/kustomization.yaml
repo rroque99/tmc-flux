@@ -3,9 +3,10 @@ kind: Component
 generatorOptions:
   disableNameSuffixHash: true
 patches:
-  - path: test-patch.yaml
-    options:
-      allowNonExisting: true
+  - target:
+      kind: HelmRelease
+      labelSelector: "app=my-app"  # Ensures the patch applies only if the resource exists
+    path: test-patch.yaml
 #  - patch: |-
 #      apiVersion: helm.toolkit.fluxcd.io/v2beta1
 #      kind: HelmRelease
