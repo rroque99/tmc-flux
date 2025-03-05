@@ -38,7 +38,7 @@ spec:
       - kind: ConfigMap
         name: additionalgroups
         # Use this ConfigMap if it exists, but proceed if it doesn't.
-        optional: true  
+        #optional: true  
     substitute:
       clustergroup_name: ${clustergroup_name}
       cluster_name: ${cluster_name}
