@@ -57,6 +57,10 @@ spec:
         name: clustergroup-name-secret
       - kind: Secret
         name: cluster-name-secret
+      - kind: ConfigMap
+        name: additionalgroups
+        # Use this ConfigMap if it exists, but proceed if it doesn't.
+        optional: true  
   prune: true
   sourceRef:
     kind: GitRepository
@@ -78,12 +82,7 @@ spec:
   postBuild:
     substituteFrom:
       - kind: Secret
-        name: cluster-name-secret
-      - kind: ConfigMap
-        name: additionalgroups
-        # Use this ConfigMap if it exists, but proceed if it doesn't.
-        optional: true  
-  
+        name: cluster-name-secret  
   prune: true
   sourceRef:
     kind: GitRepository
