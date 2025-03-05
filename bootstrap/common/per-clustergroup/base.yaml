@@ -24,7 +24,7 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
-  name: clustergroup2-gitops
+  name: clustergroup1-gitops
   namespace: tanzu-continuousdelivery-resources
 spec:
   interval: 1m0s
