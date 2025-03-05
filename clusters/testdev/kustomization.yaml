@@ -4,6 +4,7 @@ generatorOptions:
   disableNameSuffixHash: true
 
 resources:
+- additionalgroups-cm.yaml
 #- ../../apps/catalog/cert-manager
 #- ../../apps/catalog/prometheus
 #- ../../apps/catalog/mosquitto

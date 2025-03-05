@@ -29,14 +29,14 @@ metadata:
 spec:
   interval: 1m0s
   force: true
-  path: clustergroups/${clustergroup_name2:=null}
+  path: additionalgroups/${group1:=null}
   components: 
     - ../../clusters/${cluster_name}/clustergroup-patches
   prune: true
   postBuild:
     substituteFrom:
       - kind: ConfigMap
-        name: clustergroup-vars
+        name: additionalgroups
         # Use this ConfigMap if it exists, but proceed if it doesn't.
         optional: true  
     substitute:
