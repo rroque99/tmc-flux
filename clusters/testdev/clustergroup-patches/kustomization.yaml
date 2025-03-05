@@ -5,7 +5,8 @@ generatorOptions:
 patches:
   - target:
       kind: HelmRelease
-      labelSelector: "app=my-app"  # Ensures the patch applies only if the resource exists
+      name: test-tool
+#      labelSelector: "app=my-app"  # Ensures the patch applies only if the resource exists
     path: test-patch.yaml
 #  - patch: |-
 #      apiVersion: helm.toolkit.fluxcd.io/v2beta1
