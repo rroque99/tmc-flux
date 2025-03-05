@@ -29,7 +29,7 @@ metadata:
 spec:
   interval: 1m0s
   force: true
-  path: additionalgroups/${group1:=null}
+  path: additionalgroups/${group1}
   components: 
     - ../../clusters/${cluster_name}/clustergroup-patches
   prune: true
@@ -38,7 +38,7 @@ spec:
       - kind: ConfigMap
         name: additionalgroups
         # Use this ConfigMap if it exists, but proceed if it doesn't.
-        #optional: true  
+        optional: true  
     substitute:
       clustergroup_name: ${clustergroup_name}
       cluster_name: ${cluster_name}
