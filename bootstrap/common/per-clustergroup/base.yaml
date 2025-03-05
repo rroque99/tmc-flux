@@ -1,3 +1,4 @@
+---
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
@@ -11,6 +12,33 @@ spec:
     - ../../clusters/${cluster_name}/clustergroup-patches
   prune: true
   postBuild:
+    substitute:
+      clustergroup_name: ${clustergroup_name}
+      cluster_name: ${cluster_name}
+  sourceRef:
+    kind: GitRepository
+    namespace: tanzu-continuousdelivery-resources
+    name: infra-gitops
+
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: clustergroup2-gitops
+  namespace: tanzu-continuousdelivery-resources
+spec:
+  interval: 1m0s
+  force: true
+  path: clustergroups/${clustergroup_name2:=null}
+  components: 
+    - ../../clusters/${cluster_name}/clustergroup-patches
+  prune: true
+  postBuild:
+    substituteFrom:
+      - kind: ConfigMap
+        name: clustergroup-vars
+        # Use this ConfigMap if it exists, but proceed if it doesn't.
+        optional: true  
     substitute:
       clustergroup_name: ${clustergroup_name}
       cluster_name: ${cluster_name}
